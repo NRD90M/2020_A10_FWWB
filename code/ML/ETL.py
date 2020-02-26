@@ -100,10 +100,20 @@ def labencData(dataMat, colName):
     将定性数据哑编码
 
     Args:
-        dataMat: 文本数据列表
+        dataMat: 文本数据矩阵
         colName: 需要转换的字段列名
     Returns:a
         labencDatalist: 哑编码后的数据矩阵
     """
     labencDatalist = LabelEncoder().fit_transform(dataMat[colName])
     return labencDatalist
+
+def misValueDeal(dataMat):
+    """
+    缺失值处理
+
+    Args:
+        dataMat: 数据矩阵
+    Returns:a
+        labencDatalist: 缺失值处理后的数据矩阵
+    """
