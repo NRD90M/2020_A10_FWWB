@@ -21,7 +21,7 @@ def AllIndex(dataMat, labels):
     Args:
         dataMat: 数据矩阵
         lables:  簇的标签集,聚类结果内置
-    Returns:a
+    Returns:
         NULL
     """
     print("calinski_harabasz_score: %0.3f" %

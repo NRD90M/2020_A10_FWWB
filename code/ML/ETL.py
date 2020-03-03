@@ -16,14 +16,16 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.preprocessing import LabelEncoder
 
+
 def getPath():
     """
-    读取文件当前目录
+    读取数据目录
 
     Returns:
-        文件当前目录
+        数据当前目录
     """
-    return os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
+    return os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))+os.sep+'datas'+os.sep+'Data_FCDS_hashed'
+
 
 def getFilename(path):
     """
@@ -38,7 +40,8 @@ def getFilename(path):
     filenames = os.listdir(path)
     return filenames
 
-def loadData(path,filename):
+
+def loadData(path, filename):
     """
     读取数据集
 
@@ -48,9 +51,10 @@ def loadData(path,filename):
     Returns:
         dataMat: 数据矩阵
     """
-    name = path+filename
-    dataMat = pd.read_csv(name, index_col='entname')
+    name = path+os.sep+filename
+    dataMat = pd.read_csv(name, index_col='entname', encoding='ansi', low_memory=False)
     return dataMat
+
 
 def dataConcat(dataMats):
     """
@@ -61,13 +65,13 @@ def dataConcat(dataMats):
     Returns:
         labelData: 一个标签的数据矩阵
     """
-    labelData = []
-    for i in dataMats:
-        labelData = pd.concat([labelData, i], axis=1)
+    labelData = pd.DataFrame(columns = ["entname"])
+    for dataMat in dataMats:
+        labelData = pd.concat([labelData, dataMat], axis=1, sort=True)
     return labelData
 
-def dataStdScale(dataMat):
 
+def dataStdScale(dataMat):
     """
     将数据标准化
 
@@ -79,8 +83,8 @@ def dataStdScale(dataMat):
     scaleData = StandardScaler().fit_transform(dataMat)
     return scaleData
 
+
 def dataMMScale(dataMat):
-    
     """
     将数据最值缩放
 
@@ -89,8 +93,9 @@ def dataMMScale(dataMat):
     Returns:
         scaleData: 最值缩放后的数据矩阵
     """
-    scaleData =  MinMaxScaler().fit_transform(dataMat)
+    scaleData = MinMaxScaler().fit_transform(dataMat)
     return scaleData
+
 
 def onehotData(dataMat, colName):
     """
@@ -105,6 +110,7 @@ def onehotData(dataMat, colName):
     onehotDatalist = LabelBinarizer().fit_transform(dataMat[colName])
     return onehotDatalist
 
+
 def labencData(dataMat, colName):
     """
     将定性数据哑编码
@@ -118,6 +124,7 @@ def labencData(dataMat, colName):
     labencDatalist = LabelEncoder().fit_transform(dataMat[colName])
     return labencDatalist
 
+
 def misValueDeal(dataMat):
     """
     缺失值处理
@@ -125,5 +132,5 @@ def misValueDeal(dataMat):
     Args:
         dataMat: 数据矩阵
     Returns:a
-        labencDatalist: 缺失值处理后的数据矩阵
+        misValueDatalist: 缺失值处理后的数据矩阵
     """

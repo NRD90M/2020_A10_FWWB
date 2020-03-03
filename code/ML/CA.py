@@ -2,7 +2,7 @@
 
 from sklearn import metrics
 from sklearn.cluster import Birch, DBSCAN, KMeans
-from sklearn.mixture import GMM
+from sklearn.mixture import GaussianMixture as GMM
 """
 Created on 2020年2月25日
 @author: 喋喋不休
@@ -37,17 +37,17 @@ def DBSC(dataMat, EPS, MS=5):
     """
     DBSCdata = DBSCAN(eps=EPS, min_samples=MS).fit_predict(dataMat)
 
-def BIR(dataMat, C=None):
+def BIR(dataMat, CN=None):
     """
     层次聚类
 
     Args:
         dataMat:  数据矩阵
-        C: 簇数量,默认为None
+        CN: 簇数量,默认为None
     Returns:
         BIRdata:聚类结果
     """    
-    BIRdata = Birch(n_clusters=C).fit_predict(dataMat)
+    BIRdata = Birch(n_clusters=CN).fit_predict(dataMat)
     return BIRdata
 
 def GM(dataMat, C):
