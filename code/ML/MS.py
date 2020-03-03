@@ -3,6 +3,7 @@
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
 from sklearn import metrics
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
 """
 Created on 2020年2月25日
