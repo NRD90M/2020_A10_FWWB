@@ -44,6 +44,15 @@
 
 - **UI设计**
 
+**登录页面设计展示：**
+
+页面展示：
+
+<div align=center><img width="1000" height="420" src="https://github.com/Catsofsuffering/2020_A10_FWWB/blob/master/prototype/pro1.png" alt="页面展示"/></div>
+
+登录展示：
+<div align=center><img width="1000" height="420" src="https://github.com/Catsofsuffering/2020_A10_FWWB/blob/master/prototype/pro2.png" alt="登录展示"/></div>
+
 - **前端**
 
 - **产品设计**
@@ -55,7 +64,12 @@
 - [x] 搜索板块功能设计
     - [x] 简洁式搜索页面（仿搜索引擎）
     - [ ] 服务推送式搜索页面
-- [ ] 展示板块功能设计
+- [x] 展示板块功能设计
+    - [x] 企业基本信息
+    - [x] 统计数据参考
+    - [x] 企业标签分析
+    - [x] 企业聚类分析
+    - [x] 企业属性关联分析
 
 - **文档编写**
 
